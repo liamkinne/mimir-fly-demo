@@ -1,0 +1,37 @@
+app = "mimir-fly-demo"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  CONSUL_URL = "<consul-url>"
+  CONSUL_PREFIX = "<consul-prefix>"
+
+  S3_REGION = "<s3-region>"
+  S3_BUCKET_NAME = "<s3-bucket-name>"
+  S3_ENDPOINT = "<s3-endpoint>"
+  S3_ACCESS_KEY_ID = "<s3-access-key-id>"
+
+  # Secrets
+  # You should set these using `fly secrets set`
+  #
+  #     S3_SECRET_ACCESS_KEY = "<s3-secret-access-key>"
+  #     CONSUL_TOKEN = <consul-token>
+
+[checks]
+  [checks.ready]
+  grace_period = "30s"
+  interval = "15s"
+  method = "get"
+  path = "/ready"
+  port = 8080
+  timeout = "10s"
+  type = "http"
+
+[mounts]
+source="mimir"
+destination="/data"
+
+[metrics]
+  path = "/metrics"
+  port = 8080
