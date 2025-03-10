@@ -54,3 +54,15 @@ external Redis for caching. Better yet, Fly.io provides managed
 and should configure Mimir to use a Fly.io hosted redis instance by adding the
 relevant configuration. This has been tested, but is not included in this demo
 to keep things simple.
+
+## Using `fly console`
+
+It appears that Grafana have removed `/bin/sleep` from newer versions of the
+Mimir container which causes `fly console` to fail when it tries to call `sleep
+inf` on startup.
+
+To work around this, you will need to launch the console with a different container image:
+
+```shell
+fly console --image debian
+```
