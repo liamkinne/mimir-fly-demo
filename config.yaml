@@ -13,7 +13,7 @@ common:
       secret_access_key: ${S3_SECRET_ACCESS_KEY}
 
 server:
-  grpc_listen_address: '[::]'
+  grpc_listen_address: '::'
 
 blocks_storage:
   storage_prefix: blocks
