@@ -1,4 +1,5 @@
 app = "mimir-fly-demo"
+primary_region = "syd"
 
 [build]
   dockerfile = "Dockerfile"
