@@ -25,12 +25,15 @@ discovery.
 
 ### S3 storage backend
 
-Shipping your compacted indexes to a dedicated storage service is almost always
-a good idea. I've even verified this works with S3 compatible storage like
-Cloudflare R2.
+Most S3 compatible storage backends can be used with Mimir to prvide effectively
+unlimited data retention with resiliency guarantees.
 
-We still do need to attach some small volumes as Fly.io only provides us with
-5GB of ephemeral scratch disk for each machine.
+This demo has been tested with both Cloudflare's R2 and Tigris Object Storage.
+The latter being integrated directly into Fly.io.
+
+Small expandable persistent volumes are still attached to each machine since
+Mimir needs somewhere to store the indexes before they are compacted and shipped
+off to the storage backend.
 
 ### Metrics for our metrics store
 
