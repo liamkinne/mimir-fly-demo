@@ -1,4 +1,4 @@
-FROM grafana/mimir:latest
+FROM grafana/mimir:2.15.0
 
 COPY ./config.yaml /mnt/config/
 
